@@ -37,6 +37,40 @@ const Chat = () => {
               alias aliquid quam iusto reiciendis maiores placeat pariatur
               ducimus tempore illo at. Quisquam, ad.
             </p>
+            <span>1 min ago</span>
+          </div>
+        </div>
+        <div className="message own">
+          <div className="texts">
+            <p>
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+              Molestias, corrupti. Esse, beatae id libero excepturi explicabo
+              alias aliquid quam iusto reiciendis maiores placeat pariatur
+              ducimus tempore illo at. Quisquam, ad.
+            </p>
+            <span>1 min ago</span>
+          </div>
+        </div><div className="message">
+          <img src="./avatar.png" alt="" />
+          <div className="texts">
+            <p>
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+              Molestias, corrupti. Esse, beatae id libero excepturi explicabo
+              alias aliquid quam iusto reiciendis maiores placeat pariatur
+              ducimus tempore illo at. Quisquam, ad.
+            </p>
+            <span>1 min ago</span>
+          </div>
+        </div><div className="message own">
+          <div className="texts">
+            <img src="https://cdn.pixabay.com/photo/2023/10/24/02/49/bike-8337261_640.jpg" alt="" />
+            <p>
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+              Molestias, corrupti. Esse, beatae id libero excepturi explicabo
+              alias aliquid quam iusto reiciendis maiores placeat pariatur
+              ducimus tempore illo at. Quisquam, ad.
+            </p>
+            <span>1 min ago</span>
           </div>
         </div>
       </div>
