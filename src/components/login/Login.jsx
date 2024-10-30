@@ -18,10 +18,12 @@ const Login = () => {
   const [loading, setLoading] = useState(false);
 
   const handleAvatar = (e) => {
-    setAvatar({
-      file: e.target.files[0],
-      url: URL.createObjectURL(e.target.files[0]),
-    });
+    if (e.target.files[0]) {
+      setAvatar({
+        file: e.target.files[0],
+        url: URL.createObjectURL(e.target.files[0]),
+      });
+    }
   };
   const handleRegister = async (e) => {
     e.preventDefault();
