@@ -30,8 +30,7 @@ const Chat = () => {
 
   useEffect(() => {
     endRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, []);
-
+  }, [chat?.messages]);
   useEffect(() => {
     const unSub = onSnapshot(doc(db, "chats", chatId), (res) => {
       setChat(res.data());
@@ -40,6 +39,7 @@ const Chat = () => {
       unSub();
     };
   }, [chatId]);
+
 
   const handleEmoji = (e) => {
     setText((prev) => prev + e.emoji);
@@ -138,6 +138,7 @@ const Chat = () => {
               <p>{message.text}</p>
               {/* <span>1 min ago</span> */}
             </div>
+            
           </div>
         ))}
         {img.url && (
