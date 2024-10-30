@@ -5,9 +5,9 @@ import { useUserStore } from "../../lib/userStore";
 import "./detail.css";
 
 const Detail = () => {
-  const { chatId, user, isCurrentUserBlocked, isReceiverBlocked, changeBlock } =
+  const { chatId, user, isCurrentUserBlocked, isReceiverBlocked, changeBlock, resetChat } =
     useChatStore();
-  const { currentUser } = useUserStore;
+  const { currentUser } = useUserStore();
 
   const handleBlock = async () => {
     if (!user) return;
@@ -24,6 +24,11 @@ const Detail = () => {
     }
   };
 
+  const handleLogout = () => {
+    auth.signOut();
+    resetChat()
+  };
+
   return (
     <div className="detail">
       <div className="user">
@@ -32,6 +37,12 @@ const Detail = () => {
         <p>Lorem ipsum dolor sit amet.</p>
       </div>
       <div className="info">
+        <div className="option">
+          <div className="title">
+            <span>Chat Settings</span>
+            <img src="./arrowUp.png" alt="" />
+          </div>
+        </div>
         <div className="option">
           <div className="title">
             <span>Chat Settings</span>
@@ -53,7 +64,7 @@ const Detail = () => {
             <div className="photoItem">
               <div className="photoDetail">
                 <img
-                  src="https://cdn.pixabay.com/photo/2024/10/17/16/14/waterfall-9128051_640.jpg"
+                  src="https://images.pexels.com/photos/7381200/pexels-photo-7381200.jpeg?auto=compress&cs=tinysrgb&w=800&lazy=load"
                   alt=""
                 />
                 <span>photo_2024_2.png</span>
@@ -63,7 +74,7 @@ const Detail = () => {
             <div className="photoItem">
               <div className="photoDetail">
                 <img
-                  src="https://cdn.pixabay.com/photo/2024/10/17/16/14/waterfall-9128051_640.jpg"
+                  src="https://images.pexels.com/photos/7381200/pexels-photo-7381200.jpeg?auto=compress&cs=tinysrgb&w=800&lazy=load"
                   alt=""
                 />
                 <span>photo_2024_2.png</span>
@@ -73,7 +84,7 @@ const Detail = () => {
             <div className="photoItem">
               <div className="photoDetail">
                 <img
-                  src="https://cdn.pixabay.com/photo/2024/10/17/16/14/waterfall-9128051_640.jpg"
+                  src="https://images.pexels.com/photos/7381200/pexels-photo-7381200.jpeg?auto=compress&cs=tinysrgb&w=800&lazy=load"
                   alt=""
                 />
                 <span>photo_2024_2.png</span>
@@ -83,7 +94,7 @@ const Detail = () => {
             <div className="photoItem">
               <div className="photoDetail">
                 <img
-                  src="https://cdn.pixabay.com/photo/2024/10/17/16/14/waterfall-9128051_640.jpg"
+                  src="https://images.pexels.com/photos/7381200/pexels-photo-7381200.jpeg?auto=compress&cs=tinysrgb&w=800&lazy=load"
                   alt=""
                 />
                 <span>photo_2024_2.png</span>
@@ -105,7 +116,7 @@ const Detail = () => {
             ? "User blocked"
             : "Block User"}
         </button>
-        <button className="logout" onClick={() => auth.signOut()}>
+        <button className="logout" onClick={handleLogout}>
           Logout
         </button>
       </div>
