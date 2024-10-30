@@ -58,7 +58,7 @@
   .center {
     padding: 20px;
     flex: 1;
-    overflow: scroll;
+    overflow: auto;
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -73,7 +73,7 @@
 
         .texts {
           p {
-            background-color: #5183fe;
+            background-color: #AE5F40;
           }
         }
       }
@@ -156,7 +156,7 @@
     }
 
     .sendButton {
-      background-color: #5183fe;
+      background-color: #AE5F40;
       color: white;
       padding: 10px 20px;
       border: none;
@@ -164,7 +164,7 @@
       cursor: pointer;
 
       &:disabled {
-        background-color: #5182feb4;
+        background-color: #ae5f402c;
         cursor: not-allowed;
       }
     }
