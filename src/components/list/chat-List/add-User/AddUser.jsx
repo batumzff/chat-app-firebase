@@ -15,7 +15,7 @@ import {
 import { useState } from "react";
 import { useUserStore } from "../../../../lib/userStore";
 
-const AddUser = () => {
+const AddUser = ({onClose}) => {
   const [user, setUser] = useState(null);
 
   const { currentUser } = useUserStore();
@@ -28,7 +28,7 @@ const AddUser = () => {
     try {
       const userRef = collection(db, "users");
 
-      const q = query(userRef, where("username", "==", username));
+      const q = query(userRef, where("username", "==", username.toLowerCase()));
 
       const querySnapShot = await getDocs(q);
 
@@ -69,9 +69,12 @@ const AddUser = () => {
           updatedAt: Date.now(),
         }),
       });
+
+      
     } catch (err) {
       console.log(err);
     }
+    onClose(false)
   };
 
   return (
