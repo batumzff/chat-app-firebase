@@ -12,6 +12,7 @@ import { db } from "../../lib/firebase";
 import { useChatStore } from "../../lib/chatStore";
 import { useUserStore } from "../../lib/userStore";
 import upload from "../../lib/upload";
+import { format } from "timeago.js";
 
 const Chat = () => {
   const [chat, setChat] = useState();
@@ -22,20 +23,21 @@ const Chat = () => {
     url: "",
   });
 
+  const { currentUser } = useUserStore();
   const { chatId, user, isCurrentUserBlocked, isReceiverBlocked } =
     useChatStore();
-  const { currentUser } = useUserStore();
 
   const endRef = useRef(null);
 
   useEffect(() => {
     endRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, []);
+  }, [chat.messages]);
 
   useEffect(() => {
     const unSub = onSnapshot(doc(db, "chats", chatId), (res) => {
       setChat(res.data());
     });
+
     return () => {
       unSub();
     };
@@ -99,14 +101,14 @@ const Chat = () => {
       });
     } catch (err) {
       console.log(err);
-    }
-
+    } finally{
     setImg({
       file: null,
       url: "",
     });
 
     setText("");
+    }
   };
 
   return (
@@ -115,8 +117,8 @@ const Chat = () => {
         <div className="user">
           <img src={user?.avatar || "./avatar.png"} alt="" />
           <div className="texts">
-            <span> {user?.username}</span>
-            <p>Lorem ipsum dolor sit amet.</p>
+            <span>{user?.username}</span>
+            <p>Lorem ipsum dolor, sit amet.</p>
           </div>
         </div>
         <div className="icons">
@@ -131,12 +133,12 @@ const Chat = () => {
             className={
               message.senderId === currentUser?.id ? "message own" : "message"
             }
-            key={message?.createdAt}
+            key={message?.createAt}
           >
             <div className="texts">
               {message.img && <img src={message.img} alt="" />}
               <p>{message.text}</p>
-              {/* <span>1 min ago</span> */}
+              <span>{format(message.createdAt.toDate())}</span>
             </div>
           </div>
         ))}
